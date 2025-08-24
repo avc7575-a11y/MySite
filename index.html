@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Мини-Сайт</title>
+    <title>Мини-Сайт</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,38 +16,42 @@
             </ul>
         </nav>
     </header>
+
     <main>
-        <h1>Добро пожаловать на мой мини-сайт!</h1>
-        <p>Фон загружается автоматически и сохраняется при открытии сайта.</p>
+        <h1>Добро пожаловать на мини-сайт!</h1>
+        <p>Фон загружается автоматически при открытии страницы.</p>
     </main>
+
     <footer>
         <p>&copy; 2025 Мини-Сайт. Все права защищены.</p>
     </footer>
 
+    <!-- JS для автоматического фона -->
     <script>
-        // массив фоновых изображений с новыми названиями
+    window.onload = function() {
+        const savedBg = localStorage.getItem("backgroundImage");
         const bgImages = [
-            "images/Фон_Главная1.jpg",
-            "images/Фон_Главная2.jpg",
-            "images/Фон_Главная3.jpg"
+            "images/bg_main1.jpg",
+            "images/bg_main2.jpg",
+            "images/bg_main3.jpg"
         ];
 
         function setRandomBackground() {
             const randomImage = bgImages[Math.floor(Math.random() * bgImages.length)];
-            document.body.style.background = `url(${randomImage}) no-repeat center center fixed`;
+            document.body.style.backgroundImage = `url('${randomImage}')`;
+            document.body.style.backgroundRepeat = "no-repeat";
             document.body.style.backgroundSize = "cover";
             localStorage.setItem("backgroundImage", randomImage);
         }
 
-        window.onload = function() {
-            const savedBg = localStorage.getItem("backgroundImage");
-            if (savedBg) {
-                document.body.style.background = `url(${savedBg}) no-repeat center center fixed`;
-                document.body.style.backgroundSize = "cover";
-            } else {
-                setRandomBackground();
-            }
-        };
+        if (savedBg) {
+            document.body.style.backgroundImage = `url('${savedBg}')`;
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "cover";
+        } else {
+            setRandomBackground();
+        }
+    };
     </script>
 </body>
 </html>
