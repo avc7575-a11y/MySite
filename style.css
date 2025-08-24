@@ -5,8 +5,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* по умолчанию градиент, если фото не выбрано */
-    background: linear-gradient(135deg, #89f7fe, #66a6ff);
 }
 header {background-color: rgba(0,0,0,0.5);}
 .menu {
@@ -33,18 +31,6 @@ main {
     color: #fff;
     text-align: center;
 }
-button {
-    padding: 10px 20px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #ff7e5f;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    transition: transform 0.2s;
-}
-button:hover {transform: scale(1.1);}
 footer {
     background-color: rgba(0,0,0,0.5);
     text-align: center;
