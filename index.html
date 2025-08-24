@@ -18,11 +18,50 @@
     </header>
     <main>
         <h1>Добро пожаловать на мой мини-сайт!</h1>
-        <p>Здесь мы демонстрируем простой, но красивый сайт с меню и страницами.</p>
-        <button onclick="alert('Привет! Это интерактивная кнопка!')">Нажми меня</button>
+        <p>Теперь фон можно менять и он будет сохраняться.</p>
+        <button onclick="changeBackground()">Загрузить фон</button>
+        <button onclick="resetBackground()">Сбросить фон</button>
+        <input type="file" id="bgInput" accept="image/*" style="display:none" onchange="setBackground(event)">
     </main>
     <footer>
         <p>&copy; 2025 Мини-Сайт. Все права защищены.</p>
     </footer>
+
+    <script>
+        // загружаем сохранённый фон при старте
+        window.onload = function() {
+            const savedBg = localStorage.getItem("backgroundImage");
+            if (savedBg) {
+                document.body.style.background = `url(${savedBg}) no-repeat center center fixed`;
+                document.body.style.backgroundSize = "cover";
+            }
+        };
+
+        function changeBackground() {
+            document.getElementById('bgInput').click();
+        }
+
+        function setBackground(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageData = e.target.result;
+                    document.body.style.background = `url(${imageData}) no-repeat center center fixed`;
+                    document.body.style.backgroundSize = "cover";
+                    // сохраняем фон в localStorage
+                    localStorage.setItem("backgroundImage", imageData);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function resetBackground() {
+            // сброс на стандартный градиент
+            document.body.style.background = "linear-gradient(135deg, #89f7fe, #66a6ff)";
+            localStorage.removeItem("backgroundImage");
+        }
+    </script>
 </body>
 </html>
+

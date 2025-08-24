@@ -2,10 +2,11 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background: linear-gradient(135deg, #89f7fe, #66a6ff);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    /* по умолчанию градиент, если фото не выбрано */
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
 }
 header {background-color: rgba(0,0,0,0.5);}
 .menu {
@@ -49,15 +50,4 @@ footer {
     text-align: center;
     padding: 10px 0;
     color: #fff;
-}
-form input, form textarea {
-    width: 250px;
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-}
-form textarea {height: 100px;}
-@media(max-width:600px){
-    .menu {flex-direction: column;}
-    .menu li {margin: 10px 0;}
 }
